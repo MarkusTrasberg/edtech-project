@@ -103,18 +103,31 @@
               <img src="https://cdn-icons-png.flaticon.com/512/3122/3122427.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
               <div class="d-flex gap-2 w-100 justify-content-between">
               <div>
-              <p class="mb-0 opacity-75">${data.answer}</p>
+              <p class="opacity-75" style="white-space: pre-line">${data.answer}</p>
               </div>
             </div>
             </a>
             `;
         console.log("Appending GPT data")
+        console.log(data.answer)
         $("#list-group").append(gpt_data);
           }
       });
     });
 
     </script>
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      const chatInput = document.getElementById("chat-input");
+      const gptButton = document.getElementById("gpt-button");
 
+      chatInput.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          gptButton.click();
+        }
+      });
+    });
+  </script>
   </body>
 </html>
