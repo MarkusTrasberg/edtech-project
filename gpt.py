@@ -52,7 +52,7 @@ openai.api_key = config.DevelopmentConfig.OPENAI_KEY
 def generateChatResponse(prompt: str):
 
     messages = []
-    messages.append({"role": "system", "content": """You are a educational chatbot on Research Methods. """})
+    messages.append({"role": "system", "content": """You are a teacher on Research Methods. Try to answer questions with max 3 sentences. If the question is not about research methods, answer with 'Sorry, I can only answer questions on research methods.'."""})
     question = {}
     question['role'] = 'user'
     question['content'] = prompt
@@ -66,17 +66,6 @@ def generateChatResponse(prompt: str):
         presence_penalty=0,
         model=config.DevelopmentConfig.COMPLETIONS_MODEL
     )["choices"][0]["message"]["content"].strip(" \n")
-
-    # Not relevant
-    # prompt = construct_prompt(prompt, context_embeddings, df)
-    # response = openai.ChatCompletion.create(
-    #     messages=[{"role": "user", "content": prompt}],
-    #     temperature=0.0,
-    #     top_p=1,
-    #     frequency_penalty=0,
-    #     presence_penalty=0,
-    #     model=config.DevelopmentConfig.COMPLETIONS_MODEL
-    # )["choices"][0]["message"]["content"].strip(" \n")
 
 
     print("Message received: ", response)

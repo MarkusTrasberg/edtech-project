@@ -9,6 +9,23 @@
     <title>Edtech bot</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+    <style>
+      .sections-container {
+        display: flex;
+      }
+
+      .section {
+        flex-grow: 1;
+        padding: 20px;
+      }
+
+      .section-divider {
+        width: 1px;
+        background-color: #ccc;
+      }
+    </style>
+ 
   </head>
   <body>
 
@@ -16,7 +33,7 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Edtech bot</a>
+      <a class="navbar-brand" href="#">Reserch Methods Bot</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,37 +51,55 @@
   <div class="container">
     <br>
     <br>
-    <h1 class="mt-5">EdTech Bot</h1>
+    <h1 class="mt-5 text-center">Research Methods Bot</h1>
     <p class="lead">
       
     </p>
 
 
-    <div id="list-group" class="list-group w-auto">
-      <!-- <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
-        <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
-        <div class="d-flex gap-2 w-100 justify-content-between">
-          <div>
-            <p class="mb-0 opacity-75">Hello, how are you today?.</p>
-          </div>
-        </div>
-      </a> -->
-      <!-- <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
-        <img src="https://cdn-icons-png.flaticon.com/512/3122/3122427.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
-        <div class="d-flex gap-2 w-100 justify-content-between">
-          <div>
-            <p class="mb-0 opacity-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </div>
-      </a> -->
-     </div>
-
-     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="chat-input">
-        <div class="input-group-append">
-          <button id="gpt-button" class="btn btn-primary">Ask</button>
-        </div>
+    <div class="sections-container">
+      <div class="section w-50" id="section1">
+        <h2>What are research methods?</h2>
+        <p>
+            Research methods are the strategies, techniques, and tools used by researchers to collect, analyze, and interpret data in order to answer specific research questions or test hypotheses. These methods can be broadly categorized into two main types: quantitative research methods and qualitative research methods.
+        </p>
+        
+        <h2>Quantitative research methods</h2>
+        <p>
+            Quantitative research methods involve the systematic collection and analysis of numerical data to draw conclusions or make predictions about a phenomenon. These methods focus on quantifying relationships between variables and often involve statistical analysis to interpret the data. Some common quantitative research methods include:
+        </p>
+        <ul>
+            <li><strong>Surveys:</strong> Questionnaires or interviews designed to gather standardized information from a large sample of people.</li>
+            <li><strong>Experiments:</strong> Controlled studies in which researchers manipulate one or more independent variables to measure their effect on a dependent variable.</li>
+            <li><strong>Observational studies:</strong> Research in which data is collected without directly manipulating variables, often through methods such as naturalistic observation or content analysis.</li>
+            <li><strong>Correlational studies:</strong> Research that examines the relationship between two or more variables to determine if they are associated or related.</li>
+        </ul>
+        
+        <h2>Qualitative research methods</h2>
+        <p>
+            Qualitative research methods focus on exploring and understanding the meaning and experiences of individuals or groups. They provide a more in-depth and nuanced perspective on the research topic. Qualitative methods often involve collecting non-numerical data, such as text, images, or audio recordings. Some common qualitative research methods include:
+        </p>
+        <ul>
+            <li><strong>Interviews:</strong> One-on-one or group conversations in which the researcher asks open-ended questions to gain insight into participants' thoughts, feelings, and experiences.</li>
+            <li><strong>Focus groups:</strong> Small group discussions led by a moderator, designed to explore participants' perceptions, opinions, and attitudes on a specific topic.</li>
+            <li><strong>Participant observation:</strong> A method in which the researcher becomes part of a social setting or community to observe and document behavior, interactions, and events.</li>
+            <li><strong>Case studies:</strong> In-depth investigations of a single person, group, or event to explore the complexities and unique features of the subject.</li>
+            <li><strong>Content analysis:</strong> Systematic examination and interpretation of communication content, such as text, images, or audio, to identify patterns, themes, or meanings.</li>
+        </ul>
       </div>
+
+      <div class="section-divider"></div>
+
+      <div class="section w-50" id="section2" style="overflow-y:scroll; height: 800px;">
+        <div id="list-group" class="list-group"></div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="chat-input">
+          <div class="input-group-append">
+            <button id="gpt-button" class="btn btn-primary">Ask</button>
+          </div>
+        </div>
+    </div>
+    </div>
 
 
   </div>
@@ -73,8 +108,24 @@
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
+    
     <script>
+
+      $(document).ready(function() {
+        $('#section1').resizable({
+          handles: 'e',
+          minWidth: 100,
+          maxWidth: '80%',
+          resize: function(event, ui) {
+            var containerWidth = $('.sections-container').width();
+            var section1Width = ui.size.width;
+            var section2Width = containerWidth - section1Width;
+            $('.section-divider').css('left', section1Width);
+            $('#section2').css('width', section2Width);
+          }
+        });
+      });
+
     $("#gpt-button").click(function(){
         let question = $("#chat-input").val();
         let html_data = '';
